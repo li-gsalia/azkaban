@@ -34,3 +34,18 @@ CREATE TABLE IF NOT EXISTS `project_admin` (
  username     VARCHAR(64)  NOT NULL,
  PRIMARY KEY (`project_id`,`username`)
 );
+
+
+ALTER TABLE project_flows
+ADD COLUMN flow_name VARCHAR(512),
+ADD COLUMN latest_flow_version INT;
+
+
+ALTER TABLE project_flow_files
+ADD COLUMN flow_id INT,
+ADD COLUMN experimental TINYINT(1),
+ADD COLUMN dsl_version TINYINT(4),
+ADD COLUMN created_by VARCHAR(64),
+ADD COLUMN locked TINYINT(1),
+ADD COLUMN encoding_type TINYINT(4),
+ADD COLUMN flow_model_blob BLOB;
